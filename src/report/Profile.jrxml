@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-10-27T19:34:46 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report.jrxml" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1df60c69-8a25-4f0c-b2e0-a87641c23c0f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="225"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="764"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select p.profile_id as 'id',p.name , p.date_of_birth as 'dateOfBirth', p.document from profile p ]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="dateOfBirth" class="java.lang.String">
+		<fieldDescription><![CDATA[dateOfBirth]]></fieldDescription>
+	</field>
+	<field name="document" class="java.lang.String">
+		<fieldDescription><![CDATA[document]]></fieldDescription>
+	</field>
+	<field name="academicsQualificationsFull" class="java.lang.Object">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="6" width="555" height="20" uuid="be624b10-a5f0-4b1e-9f1c-bf7423dd5dfe"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Profile Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="20" uuid="c81ac136-f3f6-4efb-bcdd-951c1523f5c1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="0" width="239" height="20" uuid="52a79f78-fd49-4843-b87e-ddb0cbd90457"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="138" height="20" uuid="a5d3e582-9d7a-4200-8f6c-031291cfdc96"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date of Birth]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="0" width="138" height="20" uuid="df1bd461-3aac-4a3a-8bd8-5e1f89645ab4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Document]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="13" width="552" height="1" uuid="bcd2cd10-09d0-4838-a948-f92b3fe39fca"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="4" width="40" height="16" uuid="c8de59b6-8392-424f-a212-bb3a26e748f5"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="4" width="239" height="16" uuid="7f713cff-d609-40fd-b5cb-6dc946d6d366"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="4" width="138" height="16" uuid="ed549a36-8ad6-463e-b022-305913d19662"/>
+				<textFieldExpression><![CDATA[$F{dateOfBirth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="4" width="138" height="16" uuid="6b712a71-3bfc-4893-a94e-e84dc557fdf3"/>
+				<textFieldExpression><![CDATA[$F{document}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="34" y="30" width="520" height="4" uuid="05049170-09e0-4214-8c59-148f96ec1b09"/>
+				<subreportParameter name="collection">
+					<subreportParameterExpression><![CDATA[$F{academicsQualificationsFull}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$F{academicsQualificationsFull}]]></connectionExpression>
+				<subreportExpression><![CDATA["src/report/ProfileSubReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

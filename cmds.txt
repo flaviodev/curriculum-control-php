@@ -1,0 +1,17 @@
+
+# Dependeces management
+
+$ composer require flaviodev/ttm-core-php:"master" --prefer-dist
+$ composer update flaviodev/ttm-core-php --prefer-dist
+$ composer remove flaviodev/ttm-core-php 
+
+$ composer require flaviodev/ttm-dao-dotrine:"master" --prefer-dist 
+$ composer update flaviodev/ttm-dao-dotrine --prefer-dist 
+$ composer remove flaviodev/ttm-dao-dotrine 
+
+$ composer update
+$ composer clear-cache
+$ composer dumpautoload
+
+# generate the proxies
+$ vendor/bin/doctrine orm:generate-proxies 

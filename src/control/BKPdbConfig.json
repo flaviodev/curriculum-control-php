@@ -1,0 +1,17 @@
+
+
+{
+   "dao": "ttm_dao_doctrine\\dao\\DoctrineDao",
+	"isDevMode" : "true",
+	"entitiesPath" : "/curriculum/src/model",
+	"driver"   : "pdo_mysql",
+	"user"     : "root",
+	"password" : "23775811",
+	"dbname"   : "curriculum_vitae",
+	"charset"  : "utf8",
+	"cacheDir" : "/tmp",
+	"modelDir" : "/curriculum/src/model",
+	"proxyDir" : "/curriculum/src/model/proxies",
+	"proxyNamespace" : "Proxies",
+	"autoGenerateProxyClasses" : "true"
+}

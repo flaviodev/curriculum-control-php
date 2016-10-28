@@ -1,0 +1,23 @@
+{
+	"name" : "flaviodev/curriculum",
+	"description" : "Aplicacao teste",
+	"license" : "MIT",
+	"minimum-stability" : "dev",
+	"authors" : [{
+			"name" : "Flavio",
+			"email" : "fdsdev@gmail.com"
+		}
+	],
+	"require" : {
+	    "php" : "^7.0",
+		"flaviodev/ttm-dao-doctrine": "master",
+		"flaviodev/ttm-core-php": "master",
+		"doctrine/orm": "^2.5"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"\\" : "/",
+			"curriculum\\" : "src/"
+		}
+	}
+}

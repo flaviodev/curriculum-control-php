@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-10-27T16:41:10 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9cce9ea7-4642-4778-9535-1a48e8b25337">
+	<parameter name="collection" class="java.lang.Object" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<queryString>
+		<![CDATA[select 
+aq.acad_qual_id as 'id', aq.name_of_course as 'nameOfCourse',
+aq.date_of_begin as'dateOfBegin',
+aq.date_of_finish as 'dateOfFinish',
+aq.profile_id as 'idProfile',
+aq.institute_id as 'idInstitute',
+ie.name as 'instituteOfEducation'
+from academic_qualifications aq left outer join institute_of_education ie on aq.institute_id = ie.institute_id
+]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="nameOfCourse" class="java.lang.String">
+		<fieldDescription><![CDATA[Name of Course]]></fieldDescription>
+	</field>
+	<field name="dateOfBegin" class="java.lang.String">
+		<fieldDescription><![CDATA[Begin]]></fieldDescription>
+	</field>
+	<field name="dateOfFinish" class="java.lang.String">
+		<fieldDescription><![CDATA[finish]]></fieldDescription>
+	</field>
+	<field name="idInstitute" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="instituteOfEducation" class="java.lang.String">
+		<fieldDescription><![CDATA[Institute of Education]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="0" width="30" height="20" uuid="3dfc30d6-1905-4a66-b8f9-c01872a06525"/>
+				<textElement>
+					<font size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="0" width="188" height="20" uuid="a1450b28-4aef-476e-89be-17b87dac57e4"/>
+				<textElement>
+					<font size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Name of Course]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="0" width="63" height="20" uuid="e81a846d-7e48-4cb2-afcd-82fa1923a0af"/>
+				<textElement>
+					<font size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Begin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="71" height="20" uuid="0e0380da-cc0e-444c-8e0b-22461d3eed4b"/>
+				<textElement>
+					<font size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Finish]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="0" width="176" height="20" uuid="6379711d-1a07-490b-aa00-5c342a75e86b"/>
+				<textElement>
+					<font size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Institute of Education]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="13" y="2" width="30" height="20" uuid="8e6c96c3-af8b-4ece-a4d5-333beb38718f"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="2" width="185" height="20" uuid="69900c51-e5c2-4df3-8d88-2e814704cd45"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nameOfCourse}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="234" y="2" width="63" height="20" uuid="7a49d77a-95b4-432f-a2c9-c0f606fa7ee6"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateOfBegin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="2" width="71" height="20" uuid="34980de0-1b69-4257-ae26-8decf585d746"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateOfFinish}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="2" width="29" height="20" uuid="12f283a8-96a1-4540-bb20-b1816522164c"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idInstitute}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="2" width="151" height="20" uuid="95ccfdb7-d69f-4513-bb0b-9d799ed881b6"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{instituteOfEducation}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

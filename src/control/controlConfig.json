@@ -1,0 +1,11 @@
+{
+   "controllers":[
+      {
+         "curriculum\\control\\services\\ServiceProfile" : "curriculum\\control\\services\\ServiceProfileImp",
+      	 "curriculum\\control\\services\\ServiceInstituteOfEducation" : "curriculum\\control\\services\\ServiceInstituteOfEducationImp"
+      }
+   ],
+   "commands":[
+      {"comandoImprimeDados" : "curriculum\\control\\commands\\ComandoImprimeDados"}
+   ]
+}

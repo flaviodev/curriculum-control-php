@@ -1,0 +1,16 @@
+
+
+{
+    "dao": "ttm_dao_doctrine\\dao\\DoctrineDao",
+	"driver"   : "pdo_mysql",
+	"host"     : "localhost",
+	"dbname"   : "curriculum_vitae",
+	"user"     : "root",
+	"password" : "23775811",
+	"charset"  : "utf8",
+	"cacheDir" : "/tmp",
+	"modelDir" : "/home/flavio/projetos/workspace-ttm/curriculum-control-php/src/model",
+	"proxyDir" : "/home/flavio/projetos/workspace-ttm/curriculum-control-php/src/model/proxies",
+	"proxyNamespace" : "curriculum\\model\\proxies",
+	"autoGenerateProxyClasses" : "true"
+}
