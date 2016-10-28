@@ -4,10 +4,11 @@ namespace curriculum\control\services;
 
 use curriculum\control\Config;
 use curriculum\model\AcademicQualifications;
+use curriculum\model\InstituteOfEducation;
 use curriculum\model\Profile;
 use ttm\control\ServiceHelper;
 
-class ServiceProfileImp implements ServiceProfile {
+class ServiceRegisterImp implements ServiceRegister {
 	private $helper;
 	
 	public function __construct() {
@@ -52,5 +53,23 @@ class ServiceProfileImp implements ServiceProfile {
 		$this->helper->delete($qualificationId);
 	}
 	
+	public function getInstituteOfEducation(int $instituteId) {
+		return $this->helper->getEntity(InstituteOfEducation::class, $instituteId);
+	}
 	
+	public function createInstituteOfEducation($institute) {
+		return $this->helper->createNewEntity(InstituteOfEducation::class, $institute);
+	}
+	
+	public function getInstitutesOfEducation() {
+		return $this->helper->getEntities(InstituteOfEducation::class);
+	}
+	
+	public function updateInstituteOfEducation($institute) {
+		$this->helper->updateEntity(InstituteOfEducation::class, $institute);
+	}
+	
+	public function deleteInstituteOfEducation(int $instituteId) {
+		$this->helper->deleteEntity(InstituteOfEducation::class, $instituteId);
+	}
 }

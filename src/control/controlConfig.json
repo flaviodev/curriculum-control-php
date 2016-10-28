@@ -1,8 +1,7 @@
 {
    "controllers":[
       {
-         "curriculum\\control\\services\\ServiceProfile" : "curriculum\\control\\services\\ServiceProfileImp",
-      	 "curriculum\\control\\services\\ServiceInstituteOfEducation" : "curriculum\\control\\services\\ServiceInstituteOfEducationImp"
+         "curriculum\\control\\services\\ServiceRegister" : "curriculum\\control\\services\\ServiceRegisterImp"
       }
    ],
    "commands":[
