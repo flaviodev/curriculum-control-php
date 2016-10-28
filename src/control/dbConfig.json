@@ -3,7 +3,7 @@
 {
     "dao": "ttm_dao_doctrine\\dao\\DoctrineDao",
 	"driver"   : "pdo_mysql",
-	"host"     : "localhost",
+	"host"     : "127.0.0.1",
 	"dbname"   : "curriculum_vitae",
 	"user"     : "root",
 	"password" : "23775811",
