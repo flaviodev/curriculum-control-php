@@ -18,6 +18,7 @@ class Profile extends ObjectBOIntId {
 	}
 	
 	/**
+	 * @ttm-DtoAttribute
 	 * @Id
 	 * @GeneratedValue(strategy="AUTO")
 	 * @Column(type="integer", name="profile_id")
@@ -25,23 +26,27 @@ class Profile extends ObjectBOIntId {
 	protected  $id;
 	
 	/**
+	 * @ttm-DtoAttribute
 	 * @Column(type="string", name="name")
 	 */
 	protected $name;
 	
 	
 	/**
+	 * @ttm-DtoAttribute
 	 * @Column(type="date", name="date_of_birth")
 	 */
 	protected $dateOfBirth;
 	
 	
 	/**
+	 * @ttm-DtoAttribute
 	 * @Column(type="string", name="document")
 	 */
 	protected $document;
 	
 	/**
+	 * @ttm-DtoAttribute
 	/ * @OneToMany(targetEntity="AcademicQualifications", mappedBy="profile")
 	 */
 	protected $academicsQualifications;

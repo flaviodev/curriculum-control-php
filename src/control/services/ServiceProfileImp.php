@@ -2,60 +2,55 @@
 
 namespace curriculum\control\services;
 
-use curriculum\dto\AcademicQualificationsAux;
-use curriculum\dto\AcademicQualificationsDTO;
-use curriculum\dto\ProfileAux;
-use curriculum\dto\ProfileDTO;
-use curriculum\utils\FactotyDTO;
+use curriculum\control\Config;
+use curriculum\model\AcademicQualifications;
+use curriculum\model\Profile;
+use ttm\control\ServiceHelper;
 
 class ServiceProfileImp implements ServiceProfile {
-	private $profileAux;
-	private $qualificationsAux;
+	private $helper;
 	
 	public function __construct() {
-		$this->profileAux = new ProfileAux();
-		$this->qualificationsAux = new AcademicQualificationsAux();
+		$config = Config::getConfigDB();
+		$this->helper = new ServiceHelper($config);
 	}
 	
-	public function getProfile(int $id):ProfileDTO {
-		return $this->profileAux->getDTO($id);
+	public function getProfile(int $profileId) {
+		return $this->helper->getEntity(Profile::class, $profileId);
 	}
 	
 	public function getProfiles():array {
-		return $this->profileAux->getDTOs();
-	}
-	
-	public function updateProfile($dto) {
-		$this->profileAux->update($dto);
+		return $this->helper->getEntities(Profile::class);
 	}
 
-	public function deleteProfile(int $id) {
-		$this->profileAux->delete($id);
+	public function createProfile($profile) {
+		return $this->helper->createNewEntity(Profile::class, $profile);
 	}
 	
-	public function createProfile($dto):ProfileDTO {
-		return $this->profileAux->create($dto);
+	public function updateProfile($profile) {
+		$this->helper->updateEntity(Profile::class, $profile);
 	}
 
-	public function addAcademicQualifications($dto):AcademicQualificationsDTO {
-		return $this->qualificationsAux->create($dto);
+	public function deleteProfile(int $profileId) {
+		$this->helper->delete($profileId);
 	}
 
-	public function updateAcademicQualifications($dto) {
-		$this->qualificationsAux->update($dto);
+	public function getAcademicsQualifications($profileId) {
+		$profile = $this->helper->getEntity(Profile::class, $profileId);
+		return  $profile->getAcademicsQualifications();
+	}
+
+	public function addAcademicQualifications($qualification) {
+		return $this->helper->createNewEntity(AcademicQualifications::class, $qualification);
+	}
+
+	public function updateAcademicQualifications($qualification) {
+		$this->helper->updateEntity(AcademicQualifications::class, $qualification);
 	}
 	
-	public function removeAcademicQualifications(int $id) {
-		$this->qualificationsAux->delete($id);
+	public function removeAcademicQualifications(int $qualificationId) {
+		$this->helper->delete($qualificationId);
 	}
 	
-	public function getAcademicsQualifications($profileId):array {
-		$bo = $this->profileAux->getBO($profileId);
-		return  $this->qualificationsAux->parseDTOs($bo->getAcademicsQualifications());
-	}
 	
-	public function getProfilesReport():array {
-		$bos = $this->profileAux->getBOs();
-		return  FactotyDTO::getProfilesFullDTO($bos,$this->profileAux,$this->qualificationsAux);
-	}
 }

@@ -13,6 +13,7 @@ use ttm\model\ObjectBOIntId;
 class InstituteOfEducation extends ObjectBOIntId {
 	
 	/**
+	 * @ttm-DtoAttribute
 	 * @Id
 	 * @GeneratedValue(strategy="AUTO")
 	 * @Column(type="integer", name="institute_id")
@@ -20,6 +21,7 @@ class InstituteOfEducation extends ObjectBOIntId {
 	protected  $id;
 	
 	/**
+	 * @ttm-DtoAttribute
 	 * @Column(type="string", name="name")
 	 */
 	protected $name;

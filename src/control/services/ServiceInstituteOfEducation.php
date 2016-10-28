@@ -2,18 +2,14 @@
 
 namespace curriculum\control\services;
 
-use curriculum\dto\InstituteOfEducationDTO;
-
 interface  ServiceInstituteOfEducation {
+	public function getInstituteOfEducation(int $instituteId);
 	
-	public function getInstituteOfEducation(int $id):InstituteOfEducationDTO;
+	public function getInstitutesOfEducation();
+
+	public function createInstituteOfEducation($instituteId);
 	
-	public function getInstitutesOfEducation():array;
+	public function updateInstituteOfEducation($institute);
 	
-	public function updateInstituteOfEducation($dto);
-	
-	public function deleteInstituteOfEducation(int $id);
-	
-	public function createInstituteOfEducation($dto):InstituteOfEducationDTO;
-	
+	public function deleteInstituteOfEducation(int $instituteId);
 }

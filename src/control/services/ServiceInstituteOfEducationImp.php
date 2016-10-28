@@ -4,32 +4,36 @@ namespace curriculum\control\services;
 
 use curriculum\dto\InstituteOfEducationAux;
 use curriculum\dto\InstituteOfEducationDTO;
+use ttm\control\ServiceHelper;
+use curriculum\control\Config;
 
 class ServiceInstituteOfEducationImp implements ServiceInstituteOfEducation {
-	private $aux;
+	private $helper;
 	
 	public function __construct() {
-		$this->aux = new InstituteOfEducationAux();
+		$config = Config::getConfigDB();
+		$this->helper = new ServiceHelper($config);
 	}
 	
-	public function getInstituteOfEducation(int $id):InstituteOfEducationDTO {
-		return $this->aux->getDTO($id);
+	public function getInstituteOfEducation(int $id) {
+		return $this->helper->getDTO($id);
+	}
+
+	public function createInstituteOfEducation($dto) {
+		return $this->helper->create($dto);
 	}
 	
 	public function getInstitutesOfEducation():array {
-		return $this->aux->getDTOs();
+		return $this->helper->getDTOs();
 	}
 	
 	public function updateInstituteOfEducation($dto) {
-		$this->aux->update($dto);
+		$this->helper->update($dto);
 	}
 
 	public function deleteInstituteOfEducation(int $id) {
-		$this->aux->delete($id);
+		$this->helper->delete($id);
 	}
 	
-	public function createInstituteOfEducation($dto):InstituteOfEducationDTO {
-		return $this->aux->create($dto);
-	}
 	
 }

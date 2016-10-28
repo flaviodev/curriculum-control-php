@@ -2,6 +2,7 @@
 	"name" : "flaviodev/curriculum",
 	"description" : "Aplicacao teste",
 	"license" : "MIT",
+	"version" : "master",
 	"minimum-stability" : "dev",
 	"authors" : [{
 			"name" : "Flavio",
@@ -10,9 +11,9 @@
 	],
 	"require" : {
 	    "php" : "^7.0",
-		"flaviodev/ttm-dao-doctrine": "master",
 		"flaviodev/ttm-core-php": "master",
-		"doctrine/orm": "^2.5"
+		"doctrine/orm": "^2.5",
+		"flaviodev/ttm-dao-doctrine": "master"
 	},
 	"autoload" : {
 		"psr-4" : {
