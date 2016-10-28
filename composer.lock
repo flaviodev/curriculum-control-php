@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "e1dd28bbb27ab6fc1636575ec0b83465d2b8f0ed"
+                "reference": "757a870a60b979059035d872d9f6ec700cd05fb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/e1dd28bbb27ab6fc1636575ec0b83465d2b8f0ed",
-                "reference": "e1dd28bbb27ab6fc1636575ec0b83465d2b8f0ed",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/757a870a60b979059035d872d9f6ec700cd05fb3",
+                "reference": "757a870a60b979059035d872d9f6ec700cd05fb3",
                 "shasum": ""
             },
             "require": {
@@ -73,7 +73,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2016-10-24 11:59:51"
+            "time": "2016-10-26 23:29:21"
         },
         {
             "name": "doctrine/cache",
@@ -81,12 +81,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "a25f5386794230c62911fbe2778d0c21050ec809"
+                "reference": "6c1b03f643fc4c388318dc3d754555c41a1cf732"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/a25f5386794230c62911fbe2778d0c21050ec809",
-                "reference": "a25f5386794230c62911fbe2778d0c21050ec809",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/6c1b03f643fc4c388318dc3d754555c41a1cf732",
+                "reference": "6c1b03f643fc4c388318dc3d754555c41a1cf732",
                 "shasum": ""
             },
             "require": {
@@ -142,7 +142,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2016-10-26 10:24:47"
+            "time": "2016-10-26 23:08:41"
         },
         {
             "name": "doctrine/collections",
@@ -536,12 +536,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "26cf90e1c513305e1cc6529e4496130a7f0c6dcf"
+                "reference": "56741a3fee8b796cc6cc4b97485d12c02da1faf2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/26cf90e1c513305e1cc6529e4496130a7f0c6dcf",
-                "reference": "26cf90e1c513305e1cc6529e4496130a7f0c6dcf",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/56741a3fee8b796cc6cc4b97485d12c02da1faf2",
+                "reference": "56741a3fee8b796cc6cc4b97485d12c02da1faf2",
                 "shasum": ""
             },
             "require": {
@@ -607,7 +607,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2016-10-25 03:56:54"
+            "time": "2016-10-27 00:11:19"
         },
         {
             "name": "flaviodev/ttm-core-php",
@@ -615,12 +615,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/flaviodev/ttm-core-php.git",
-                "reference": "9f7a9bc38340224b8acdf35b965c903e2947f8fd"
+                "reference": "10146f4886ba2cc11f3e55b4e1ed78fcd14d2411"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flaviodev/ttm-core-php/zipball/9f7a9bc38340224b8acdf35b965c903e2947f8fd",
-                "reference": "9f7a9bc38340224b8acdf35b965c903e2947f8fd",
+                "url": "https://api.github.com/repos/flaviodev/ttm-core-php/zipball/10146f4886ba2cc11f3e55b4e1ed78fcd14d2411",
+                "reference": "10146f4886ba2cc11f3e55b4e1ed78fcd14d2411",
                 "shasum": ""
             },
             "require": {
@@ -648,7 +648,7 @@
             "keywords": [
                 "core"
             ],
-            "time": "2016-10-26 18:53:29"
+            "time": "2016-10-28 13:37:40"
         },
         {
             "name": "flaviodev/ttm-dao-doctrine",
@@ -744,12 +744,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "72fafa731ed6dcfdeadc60ed92922e8d6ff451b5"
+                "reference": "d4875ff77dca3f5c6309e2f3f79ce17918ba3cc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/72fafa731ed6dcfdeadc60ed92922e8d6ff451b5",
-                "reference": "72fafa731ed6dcfdeadc60ed92922e8d6ff451b5",
+                "url": "https://api.github.com/repos/symfony/console/zipball/d4875ff77dca3f5c6309e2f3f79ce17918ba3cc0",
+                "reference": "d4875ff77dca3f5c6309e2f3f79ce17918ba3cc0",
                 "shasum": ""
             },
             "require": {
@@ -799,7 +799,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-10-21 21:28:04"
+            "time": "2016-10-27 15:03:48"
         },
         {
             "name": "symfony/debug",
