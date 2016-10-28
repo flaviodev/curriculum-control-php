@@ -5,11 +5,12 @@ ini_set('display_errors', true);
 header('Content-Type: text/html; charset=utf-8');
 require 'vendor/autoload.php';
 
-use curriculum\control\services\ServiceProfileImp;
-use curriculum\report\TestReport;
-use curriculum\report\TestReport2;
+use curriculum\control\services\ServiceRegisterImp;
+use ttm\util\Util;
+use ttm\util\UtilDate;
+
 class Teste {
-	public function invoke2($object, $function, $jsonData, bool $isCommand=false) {
+	public function invoke($object, $function, $jsonData, bool $isCommand=false) {
 		if(is_null($object)) {
 			$this->response('Servico não existe',404);
 		} else {
@@ -30,10 +31,21 @@ class Teste {
 					}
 					
 					$reflectionMethod = new \ReflectionMethod($object, $function);
+					
 					if($isCommand) {
-						return $reflectionMethod->invoke($object,$args);
+						$return = $reflectionMethod->invoke($object,$args);
+						
+						$data = array();
+						$data['reply']= $this->filterSendPropertiesReply($return);
+						
+						return json_encode($data,false,JSON_UNESCAPED_UNICODE);
 					} else {
-						return $reflectionMethod->invokeArgs($object, $args);
+						$return = $reflectionMethod->invokeArgs($object,$args);
+						
+						$data = array();
+						$data['reply']= $this->filterSendPropertiesReply($return);
+						
+						return json_encode($data,false,JSON_UNESCAPED_UNICODE);
 					}
 				} else {
 					$this->response('Método não existe',404);
@@ -42,6 +54,59 @@ class Teste {
 		}
 	}
 
+	private function filterSendPropertiesReply($data) {
+		if(is_array($data) || is_subclass_of($data, \ArrayAccess::class)) {
+			$arrayFO = array();
+			foreach ($data as $item) {
+				array_push($arrayFO, $this->getFilteredObjectSendPropertiesReply($item));
+			}
+				
+			return $arrayFO;
+		} else {
+			return $this->getFilteredObjectSendPropertiesReply($data);
+		}
+	}
+	
+	private function getFilteredObjectSendPropertiesReply($data) {
+		if(is_null($data))
+			return;
+	
+			$filteredObject = new \stdClass();
+	
+			$reflectionObject = new \ReflectionObject($data);
+	
+			foreach ($reflectionObject->getProperties() as $prop) {
+				if(strpos($prop->getDocComment(), "@ttm-DtoAttribute")>-1) {
+					$property = $prop->getName();
+	
+					$function = Util::doMethodName($property,"get");
+					
+					if((int)method_exists($data,$function) > 0) {
+						$reflectionMethod = new \ReflectionMethod($data, $function);
+							
+						$value = $reflectionMethod->invoke($data, null);
+							
+						if(is_a($value, \DateTime::class)) {
+							$value = UtilDate::dateToString($value);
+						}
+	
+						$filteredObject->$property = $value;
+					} else {
+						$function = Util::doMethodName($property,"is");
+						if((int)method_exists($data,$function) > 0) {
+							$reflectionMethod = new \ReflectionMethod($data, $function);
+								
+							$value = $reflectionMethod->invoke($data, null);
+							$filteredObject->$property = $value;
+						}
+					}
+				}
+			}
+	
+			return $filteredObject;
+	}
+	
+	
 	
 
 }
@@ -49,43 +114,43 @@ class Teste {
 echo "<br>inicio teste";
 
 $teste = new Teste();
-$controller = new ServiceProfileImp();
+$controller = new ServiceRegisterImp();
 
 echo "<br><br><br>consulta profile 1<br>";
 $data = '{"id":"1"}';
-$resultado = $teste->invoke2($controller, "getProfile", $data);
+$resultado = $teste->invoke($controller, "getProfile", $data);
 var_dump($resultado);
 
 
 echo "<br><br><br>alterando profile 1<br>";
 $data = '{"profile":[{"id":"1","name":"Flávio de Souza","dateOfBirth":"1981-09-13","document":"1334343"}]}';
-$teste->invoke2($controller, "updateProfile", $data);
+$teste->invoke($controller, "updateProfile", $data);
 
 echo "<br><br><br>consultado profile 1<br>";
 $data = '{"id":"1"}';
-$resultado = $teste->invoke2($controller, "getProfile", $data);
+$resultado = $teste->invoke($controller, "getProfile", $data);
 var_dump($resultado);
 
 echo "<br><br><br>incluindo profile <br>";
 $data = '{"profile":[{"id":"1","name":"Maria Clara de Souza e Lima","dateOfBirth":"2016-03-25","document":"1212121"}]}';
-$resultado = $teste->invoke2($controller, "createProfile", $data);
+$resultado = $teste->invoke($controller, "createProfile", $data);
 var_dump($resultado);
 
-$data = '{"id":"'.$resultado->id.'"}';
+$j = json_decode($resultado);
+$id = $j->reply->id;
+$data = '{"id":"'.$id.'"}';
 echo "<br><br><br>deletando profile incluído <br>";
-$resultado = $teste->invoke2($controller, "deleteProfile", $data);
+$resultado = $teste->invoke($controller, "deleteProfile", $data);
 
 echo "<br><br><br>obtendo lista de profiles <br>";
-$resultado = $teste->invoke2($controller, "getProfiles",null);
+$resultado = $teste->invoke($controller, "getProfiles",null);
 var_dump($resultado);
 
 echo "<br><br><br>obtendo lista de aq <br>";
 $data = '{"id":"1"}';
-$resultado = $teste->invoke2($controller, "getAcademicsQualifications",$data);
+$resultado = $teste->invoke($controller, "getAcademicsQualifications",$data);
 var_dump($resultado);
 
-echo "<br><br><br>obtendo lista report <br>";
-$resultado = $teste->invoke2($controller, "getProfilesReport",null);
 
 // $report = new TestReport();
 // $report->geraRelatorio($resultado);

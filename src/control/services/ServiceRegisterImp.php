@@ -33,7 +33,7 @@ class ServiceRegisterImp implements ServiceRegister {
 	}
 
 	public function deleteProfile(int $profileId) {
-		$this->helper->delete($profileId);
+		$this->helper->deleteEntity(Profile::class,$profileId);
 	}
 
 	public function getAcademicsQualifications($profileId) {
@@ -50,7 +50,7 @@ class ServiceRegisterImp implements ServiceRegister {
 	}
 	
 	public function removeAcademicQualifications(int $qualificationId) {
-		$this->helper->delete($qualificationId);
+		$this->helper->deleteEntity(AcademicQualifications::class,$qualificationId);
 	}
 	
 	public function getInstituteOfEducation(int $instituteId) {
