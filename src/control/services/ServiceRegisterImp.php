@@ -16,12 +16,12 @@ class ServiceRegisterImp implements ServiceRegister {
 		$this->helper = new ServiceHelper($config);
 	}
 	
-	public function getProfile(int $profileId) {
-		return $this->helper->getEntity(Profile::class, $profileId);
-	}
-	
 	public function getProfiles():array {
 		return $this->helper->getEntities(Profile::class);
+	}
+	
+	public function getProfile(int $profileId) {
+		return $this->helper->getEntity(Profile::class, $profileId);
 	}
 
 	public function createProfile($profile) {
@@ -53,16 +53,16 @@ class ServiceRegisterImp implements ServiceRegister {
 		$this->helper->deleteEntity(AcademicQualifications::class,$qualificationId);
 	}
 	
+	public function getInstitutesOfEducation() {
+		return $this->helper->getEntities(InstituteOfEducation::class);
+	}
+	
 	public function getInstituteOfEducation(int $instituteId) {
 		return $this->helper->getEntity(InstituteOfEducation::class, $instituteId);
 	}
 	
 	public function createInstituteOfEducation($institute) {
 		return $this->helper->createNewEntity(InstituteOfEducation::class, $institute);
-	}
-	
-	public function getInstitutesOfEducation() {
-		return $this->helper->getEntities(InstituteOfEducation::class);
 	}
 	
 	public function updateInstituteOfEducation($institute) {

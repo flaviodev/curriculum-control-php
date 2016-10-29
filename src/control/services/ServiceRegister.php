@@ -3,9 +3,9 @@
 namespace curriculum\control\services;
 
 interface  ServiceRegister {
-	public function getProfile(int $profileId);
-	
 	public function getProfiles();
+	
+	public function getProfile(int $profileId);
 
 	public function createProfile($profile);
 	
@@ -21,9 +21,9 @@ interface  ServiceRegister {
 	
 	public function removeAcademicQualifications(int $qualificationId);
 	
-	public function getInstituteOfEducation(int $instituteId);
-	
 	public function getInstitutesOfEducation();
+	
+	public function getInstituteOfEducation(int $instituteId);
 	
 	public function createInstituteOfEducation($instituteId);
 	
