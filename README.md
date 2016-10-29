@@ -1,6 +1,6 @@
 # curriculum-control-php
 
-Simple application for to implementation of the architecture (ttm-core-php).
+Small application to implementation of the architecture (ttm-core-php).
 
 The idea is to create a simple curriculum, showing the personal informations, academics qualifications, professional experiences and especifics knowledges.
 
