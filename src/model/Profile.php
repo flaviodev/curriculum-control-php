@@ -46,8 +46,7 @@ class Profile extends ObjectBOIntId {
 	protected $document;
 	
 	/**
-	 * @ttm-DtoAttribute
-	/ * @OneToMany(targetEntity="AcademicQualifications", mappedBy="profile")
+	 * @OneToMany(targetEntity="AcademicQualifications", mappedBy="profile")
 	 */
 	protected $academicsQualifications;
 	
