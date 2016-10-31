@@ -1,5 +1,5 @@
 <?php
-namespace curriculum\control;
+namespace curriculum;
 
 class Config {
 	private static $config=null;
