@@ -2,11 +2,11 @@
 
 namespace curriculum\control\services;
 
-use curriculum\control\Config;
 use curriculum\model\AcademicQualifications;
 use curriculum\model\InstituteOfEducation;
 use curriculum\model\Profile;
 use ttm\control\ServiceHelper;
+use curriculum\Config;
 
 class ServiceRegisterImp implements ServiceRegister {
 	private $helper;
