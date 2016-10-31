@@ -5,8 +5,8 @@ namespace curriculum\control;
 require_once  '../../vendor/autoload.php';
 
 use ttm\control\AbstractFrontController;
-use ttm\util\TTMException;
 use curriculum\Config;
+use ttm\exception\TTMException;
 
 /**
  * @author flaviodev - Flávio de Souza TTM/ITS - fdsdev@gmail.com
@@ -42,13 +42,12 @@ class FrontController extends AbstractFrontController {
 		
 		// getting registered services
 		$services = Config::getConfig()->services; 
-		
+		$serviceName = $services->$serviceInterfaceName;
+
 		//whether service is not found
-		if(!isset($services[$serviceInterfaceName])) {
+		if(is_null($serviceName)) {
 			throw new \InvalidArgumentException("No service registered for this service interface");
 		}
-		
-		$serviceName = $services[$serviceInterfaceName];
 		
 		$messageError = "Error on instance of the service: ".$serviceName;
 		$service = null;
@@ -61,7 +60,7 @@ class FrontController extends AbstractFrontController {
 		if(is_null($service)) {
 			throw new TTMException($messageError);
 		}
-		
+
 		return $service;
 	}
 
@@ -105,14 +104,13 @@ class FrontController extends AbstractFrontController {
 		
 		//getting the registered commands
 		$commands = Config::getConfig()->commands;
+		$commandName = $commands->$commandAlias;
 		
 		// whether command not found
-		if(!isset($commands[$commandAlias])) {
+		if(is_null($commandName)) {
 			throw new \InvalidArgumentException("No command registred for this command alias");
 		}
-		
-		$commandName = $commands[$commandAlias];
-		
+
 		$messageError = "Error on instance of the command: ".$commandName;
 		$command = null;
 		try {
