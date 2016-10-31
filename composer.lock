@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "edae423cd6bf3d51c032eec45b345402",
-    "content-hash": "60351fd56db16cacd6dc770c432184d1",
+    "hash": "f79fe4ac2735cf82084e829409207fcd",
+    "content-hash": "0291aa96e7f65d874e28a6ee0a406455",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -81,12 +81,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "6c1b03f643fc4c388318dc3d754555c41a1cf732"
+                "reference": "0e7ac7811c67d1c4fe93e0fe44d11c90e09d6b20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/6c1b03f643fc4c388318dc3d754555c41a1cf732",
-                "reference": "6c1b03f643fc4c388318dc3d754555c41a1cf732",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/0e7ac7811c67d1c4fe93e0fe44d11c90e09d6b20",
+                "reference": "0e7ac7811c67d1c4fe93e0fe44d11c90e09d6b20",
                 "shasum": ""
             },
             "require": {
@@ -96,7 +96,7 @@
                 "doctrine/common": ">2.2,<2.4"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5.0",
+                "phpunit/phpunit": "^5.6.2",
                 "predis/predis": "~1.0"
             },
             "type": "library",
@@ -142,7 +142,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2016-10-26 23:08:41"
+            "time": "2016-10-29 11:43:38"
         },
         {
             "name": "doctrine/collections",
@@ -615,12 +615,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/flaviodev/ttm-core-php.git",
-                "reference": "23034ec66981b1d835b6b6d3e241f83b53cc3253"
+                "reference": "ed0bb7b3c05eddf6b9caa07286a993d25163981f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flaviodev/ttm-core-php/zipball/23034ec66981b1d835b6b6d3e241f83b53cc3253",
-                "reference": "23034ec66981b1d835b6b6d3e241f83b53cc3253",
+                "url": "https://api.github.com/repos/flaviodev/ttm-core-php/zipball/ed0bb7b3c05eddf6b9caa07286a993d25163981f",
+                "reference": "ed0bb7b3c05eddf6b9caa07286a993d25163981f",
                 "shasum": ""
             },
             "require": {
@@ -648,7 +648,7 @@
             "keywords": [
                 "core"
             ],
-            "time": "2016-10-28 18:38:34"
+            "time": "2016-10-31 01:28:02"
         },
         {
             "name": "flaviodev/ttm-dao-doctrine",
