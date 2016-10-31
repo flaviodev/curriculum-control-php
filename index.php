@@ -6,22 +6,24 @@ header('Content-Type: text/html; charset=utf-8');
 require 'vendor/autoload.php';
 
 use curriculum\control\services\ServiceRegisterImp;
-use ttm\util\Util;
-use ttm\util\UtilDate;
+use ttm\Config;
 
 class Teste {
-	public function invoke($object, $function, $jsonData, bool $isCommand=false) {
+	public function invoke($object, $methodName, $jsonData, bool $isCommand=false) {
 		if(is_null($object)) {
-			$this->response('Servico não existe',404);
+			$this->response('Requested service/command not found',404);
 		} else {
-			if(!is_null($function)) {
-				if((int)method_exists($object,$function) > 0) {
+			if(!is_null($methodName)) {
+				if((int)method_exists($object,$methodName) > 0) {
+					//getting input parameters
+					$input = json_decode($jsonData);
+	
 					$args = array();
-					if(!is_null($jsonData)) {
-						$input = json_decode($jsonData,false,JSON_UNESCAPED_UNICODE);
-						
+					if(!is_null($input)) {
+						// creating array of arguements for invonking service
 						$i=0;
 						foreach ($input as $value) {
+							// whether parameter arrived encapsulated on secong level of the input array
 							if(is_array($value)) {
 								$args[$i++] = $value[0];
 							} else {
@@ -30,83 +32,22 @@ class Teste {
 						}
 					}
 					
-					$reflectionMethod = new \ReflectionMethod($object, $function);
-					
+					// invoking method on service/command
+					$reflectionMethod = new \ReflectionMethod($object, $methodName);
 					if($isCommand) {
-						$return = $reflectionMethod->invoke($object,$args);
-						
-						$data = array();
-						$data['reply']= $this->filterSendPropertiesReply($return);
-						
-						return json_encode($data,false,JSON_UNESCAPED_UNICODE);
+						// on command sets an array of arguments
+						return Config::getDataParser()->parseOutputData($reflectionMethod->invoke($object,$args));
 					} else {
-						$return = $reflectionMethod->invokeArgs($object,$args);
-						
-						$data = array();
-						$data['reply']= $this->filterSendPropertiesReply($return);
-						
-						return json_encode($data,false,JSON_UNESCAPED_UNICODE);
+						// on service the sequence of input arguments should be the
+						// same of the method parameters (method signature)
+						return Config::getDataParser()->parseOutputData($reflectionMethod->invokeArgs($object, $args));
 					}
 				} else {
-					$this->response('Método não existe',404);
+					$this->response('Resource of service/command not found',404);
 				}
 			}
 		}
 	}
-
-	private function filterSendPropertiesReply($data) {
-		if(is_array($data) || is_subclass_of($data, \ArrayAccess::class)) {
-			$arrayFO = array();
-			foreach ($data as $item) {
-				array_push($arrayFO, $this->getFilteredObjectSendPropertiesReply($item));
-			}
-				
-			return $arrayFO;
-		} else {
-			return $this->getFilteredObjectSendPropertiesReply($data);
-		}
-	}
-	
-	private function getFilteredObjectSendPropertiesReply($data) {
-		if(is_null($data))
-			return;
-	
-			$filteredObject = new \stdClass();
-	
-			$reflectionObject = new \ReflectionObject($data);
-	
-			foreach ($reflectionObject->getProperties() as $prop) {
-				if(strpos($prop->getDocComment(), "@ttm-DtoAttribute")>-1) {
-					$property = $prop->getName();
-	
-					$function = Util::doMethodName($property,"get");
-					
-					if((int)method_exists($data,$function) > 0) {
-						$reflectionMethod = new \ReflectionMethod($data, $function);
-							
-						$value = $reflectionMethod->invoke($data, null);
-							
-						if(is_a($value, \DateTime::class)) {
-							$value = UtilDate::dateToString($value);
-						}
-	
-						$filteredObject->$property = $value;
-					} else {
-						$function = Util::doMethodName($property,"is");
-						if((int)method_exists($data,$function) > 0) {
-							$reflectionMethod = new \ReflectionMethod($data, $function);
-								
-							$value = $reflectionMethod->invoke($data, null);
-							$filteredObject->$property = $value;
-						}
-					}
-				}
-			}
-	
-			return $filteredObject;
-	}
-	
-	
 	
 
 }
@@ -115,6 +56,7 @@ echo "<br>inicio teste";
 
 $teste = new Teste();
 $controller = new ServiceRegisterImp();
+
 
 echo "<br><br><br>consulta profile 1<br>";
 $data = '{"id":"1"}';
@@ -137,7 +79,7 @@ $resultado = $teste->invoke($controller, "createProfile", $data);
 var_dump($resultado);
 
 $j = json_decode($resultado);
-$id = $j->reply->id;
+$id = $j->id;
 $data = '{"id":"'.$id.'"}';
 echo "<br><br><br>deletando profile incluído <br>";
 $resultado = $teste->invoke($controller, "deleteProfile", $data);
