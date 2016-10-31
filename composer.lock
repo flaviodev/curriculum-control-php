@@ -615,12 +615,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/flaviodev/ttm-core-php.git",
-                "reference": "ed0bb7b3c05eddf6b9caa07286a993d25163981f"
+                "reference": "9f1f61142fbc80d71a67b06d043b386841f3e829"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flaviodev/ttm-core-php/zipball/ed0bb7b3c05eddf6b9caa07286a993d25163981f",
-                "reference": "ed0bb7b3c05eddf6b9caa07286a993d25163981f",
+                "url": "https://api.github.com/repos/flaviodev/ttm-core-php/zipball/9f1f61142fbc80d71a67b06d043b386841f3e829",
+                "reference": "9f1f61142fbc80d71a67b06d043b386841f3e829",
                 "shasum": ""
             },
             "require": {
@@ -648,7 +648,7 @@
             "keywords": [
                 "core"
             ],
-            "time": "2016-10-31 01:28:02"
+            "time": "2016-10-31 02:09:40"
         },
         {
             "name": "flaviodev/ttm-dao-doctrine",
@@ -656,12 +656,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/flaviodev/ttm-dao-doctrine.git",
-                "reference": "d630c71618c62b4443d7f7b8972522279888b6ce"
+                "reference": "1939e6361316bcf4b73bfe4fe6bc376862c16108"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flaviodev/ttm-dao-doctrine/zipball/d630c71618c62b4443d7f7b8972522279888b6ce",
-                "reference": "d630c71618c62b4443d7f7b8972522279888b6ce",
+                "url": "https://api.github.com/repos/flaviodev/ttm-dao-doctrine/zipball/1939e6361316bcf4b73bfe4fe6bc376862c16108",
+                "reference": "1939e6361316bcf4b73bfe4fe6bc376862c16108",
                 "shasum": ""
             },
             "require": {
@@ -671,7 +671,7 @@
                 "doctrine/orm": "^2.5",
                 "flaviodev/ttm-core-php": "master"
             },
-            "type": "library",
+            "type": "api",
             "autoload": {
                 "psr-4": {
                     "\\": "/",
@@ -688,12 +688,18 @@
                     "email": "fdsdev@gmail.com"
                 }
             ],
-            "description": "Architecture Core",
+            "description": "An implementation of a DAO for comunication on data bases using Doctrine ORM",
             "homepage": "https://github.com/flaviodev/ttm-dao-doctrine",
             "keywords": [
-                "core"
+                "api",
+                "core",
+                "dao",
+                "doctrine",
+                "orm",
+                "php",
+                "ttm"
             ],
-            "time": "2016-10-28 18:14:04"
+            "time": "2016-10-31 01:40:25"
         },
         {
             "name": "psr/log",
