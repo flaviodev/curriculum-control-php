@@ -1,5 +1,5 @@
 {
-   "controllers":[
+   "services":[
       {
          "curriculum\\control\\services\\ServiceRegister" : "curriculum\\control\\services\\ServiceRegisterImp"
       }
