@@ -615,12 +615,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/flaviodev/ttm-core-php.git",
-                "reference": "11c588f8b11b71cccde545a71b827eae328b28b0"
+                "reference": "b8b83a822c9ec66eee2205d571b7b5fe624cd6ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flaviodev/ttm-core-php/zipball/11c588f8b11b71cccde545a71b827eae328b28b0",
-                "reference": "11c588f8b11b71cccde545a71b827eae328b28b0",
+                "url": "https://api.github.com/repos/flaviodev/ttm-core-php/zipball/b8b83a822c9ec66eee2205d571b7b5fe624cd6ca",
+                "reference": "b8b83a822c9ec66eee2205d571b7b5fe624cd6ca",
                 "shasum": ""
             },
             "require": {
@@ -648,7 +648,7 @@
             "keywords": [
                 "core"
             ],
-            "time": "2016-11-01 18:21:32"
+            "time": "2016-11-01 23:08:35"
         },
         {
             "name": "flaviodev/ttm-dao-doctrine",
