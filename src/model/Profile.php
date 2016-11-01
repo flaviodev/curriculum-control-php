@@ -3,7 +3,7 @@
 namespace curriculum\model;
 
 
-use ttm\model\ObjectBOIntId;
+use ttm\model\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @Entity
  * @Table(name="profile")
  */
-class Profile extends ObjectBOIntId {
+class Profile extends Model {
 	
 	public function __construct() {
 		$this->academicsQualifications = new ArrayCollection();

@@ -3,14 +3,14 @@
 namespace curriculum\model;
 
 
-use ttm\model\ObjectBOIntId;
+use ttm\model\Model;
 
 /**
  *
  * @Entity
  * @Table(name="academic_qualifications")
  */
-class AcademicQualifications extends ObjectBOIntId {
+class AcademicQualifications extends Model {
 	
 	/**
 	 * @ttm-DtoAttribute
