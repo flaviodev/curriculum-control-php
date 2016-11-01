@@ -53,11 +53,11 @@ class AcademicQualifications extends Model {
 	 */
 	protected $instituteOfEducation;
 	
-	public function getId():int {
+	public function getId() {
 		return $this->id;
 	}
 	
-	public function setId(int $id) {
+	public function setId($id) {
 		$this->id = $id;
 	}
 		
