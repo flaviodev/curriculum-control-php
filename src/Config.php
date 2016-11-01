@@ -1,22 +1,25 @@
 <?php
+
 namespace curriculum;
 
 class Config {
-	private static $config=null;
-	private static $configDB=null;
+	private static $controlConfig=null;
+	private static $daoConfig=null;
 		
-	public static function getConfig() {
-		if(Config::$config==null)
-			Config::$config = json_decode(file_get_contents(__DIR__."/controlConfig.json"));
-	
-			return Config::$config;
+	public static function getControlConfig() {
+		if(Config::$controlConfig==null){
+			Config::$controlConfig = json_decode(file_get_contents(__DIR__."/controlConfig.json"));
+		}
+		
+		return Config::$controlConfig;
 	}
 	
-	public static function getConfigDB() {
-		if(Config::$configDB==null)
-			Config::$configDB = json_decode(file_get_contents(__DIR__."/dbConfig.json"),true);
-	
-			return Config::$configDB;
+	public static function getDaoConfig() {
+		if(Config::$daoConfig==null) {
+			Config::$daoConfig = json_decode(file_get_contents(__DIR__."/daoConfig.json"),true);
+		}
+		
+		return Config::$daoConfig;
 	}
 	
 }
