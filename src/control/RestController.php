@@ -131,7 +131,12 @@ class RestController extends AbstractRestController {
 			throw new \InvalidArgumentException("The model alias can't be null");
 		}
 		
-		return 'curriculum\\model\\'.$modelAlias;
+		$model = 'curriculum\\model\\'.$modelAlias;
+		if(!class_exists($model)) {
+			$model = 'curriculum\\model_emp\\'.$modelAlias;
+		}
+		
+		return $model;
 	}
 	
 	public function getDaoConfig() {
