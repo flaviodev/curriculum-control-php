@@ -1,6 +1,10 @@
 <?php
 namespace curriculum\control;
 
+error_reporting(E_ALL | E_STRICT);
+ini_set('display_errors', true);
+
+
 // require file that load the dependencies
 require_once  '../../vendor/autoload.php';
 
@@ -139,14 +143,15 @@ class RestController extends AbstractRestController {
 		return $model;
 	}
 	
-	public function getDaoConfig() {
+	public function getDaoConfig():array {
 		return Config::getDaoConfig();
 	}
 }
 
 // when .htaccess redirects the request, the front controller is created and 
 // the processeRequest method is invoked 
-$frontController = new RestController();
-$frontController->processRequest();
+
+$restController = new RestController();
+$restController->processRequest();
 
 ?>
