@@ -8,7 +8,7 @@ class Config {
 		
 	public static function getControlConfig() {
 		if(Config::$controlConfig==null){
-			Config::$controlConfig = json_decode(file_get_contents(__DIR__."/controlConfig.json"));
+			Config::$controlConfig = json_decode(file_get_contents(__DIR__."/controlConfig.json.php"));
 		}
 		
 		return Config::$controlConfig;
@@ -16,7 +16,7 @@ class Config {
 	
 	public static function getDaoConfig() {
 		if(Config::$daoConfig==null) {
-			Config::$daoConfig = json_decode(file_get_contents(__DIR__."/daoConfig.json"),true);
+			Config::$daoConfig = json_decode(file_get_contents(__DIR__."/daoConfig.json.php"),true);
 		}
 		
 		return Config::$daoConfig;
