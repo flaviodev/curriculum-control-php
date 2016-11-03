@@ -21,7 +21,7 @@ use ttm\exception\TTMException;
  * @version 1.0
  */
 class RestController extends AbstractRestController {
-
+	
 	/**
 	 * @method locateCommand - Implements the seek of the registred commands
 	 *
