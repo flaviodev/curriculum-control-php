@@ -3,6 +3,8 @@ namespace curriculum\control;
 
 error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', true);
+ini_set('display_startup_errors', true);
+ini_set('log_errors', true);
 
 
 // require file that load the dependencies
