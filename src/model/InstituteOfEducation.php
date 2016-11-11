@@ -2,12 +2,13 @@
 namespace curriculum\model;
 
 use ttm\model\Model;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @Entity
  */
 class InstituteOfEducation extends Model {
-	
+
 	/**
 	 * @ttm-DtoAttribute
 	 * @Id
@@ -17,10 +18,13 @@ class InstituteOfEducation extends Model {
 	protected  $id;
 	
 	/**
-	 * @ttm-DtoAttribute
-	 * @Column(type="string")
+	 * @OneToMany(targetEntity="InstituteOfEducationStrings", mappedBy="instituteOfEducation")
 	 */
-	protected $name;
+	protected $institutesOfEducationStrings;
+	
+	public function __construct() {
+		$this->institutesOfEducationStrings = new ArrayCollection();
+	}
 	
 	public function getId() {
 		return $this->id;
@@ -30,11 +34,11 @@ class InstituteOfEducation extends Model {
 		$this->id = $id;
 	}
 	
-	public function getName():string {
-		return $this->name;
+	public function getInstitutesOfEducationStrings() {
+		return $this->institutesOfEducationStrings;
 	}
 	
-	public function setName(string $name) {
-		$this->name = $name;
+	public function setInstitutesOfEducationStrings($institutesOfEducationStrings) {
+		$this->institutesOfEducationStrings = $institutesOfEducationStrings;
 	}
 }

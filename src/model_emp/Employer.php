@@ -2,6 +2,7 @@
 namespace curriculum\model_emp;
 
 use ttm\model\Model;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @Entity
@@ -17,10 +18,13 @@ class Employer extends Model {
 	protected  $id;
 	
 	/**
-	 * @ttm-DtoAttribute
-	 * @Column(type="string")
+	 * @OneToMany(targetEntity="EmployerStrings", mappedBy="employer")
 	 */
-	protected $name;
+	protected $employersStrings;
+	
+	public function __construct() {
+		$this->employersStrings = new ArrayCollection();
+	}
 	
 	public function getId() {
 		return $this->id;
@@ -30,11 +34,11 @@ class Employer extends Model {
 		$this->id = $id;
 	}
 	
-	public function getName():string {
-		return $this->name;
+	public function getEmployersStrings() {
+		return $this->employersStrings;
 	}
-	
-	public function setName(string $name) {
-		$this->name = $name;
+
+	public function setEmployersStrings($employersStrings) {
+		$this->employersStrings = $employersStrings;
 	}
 }

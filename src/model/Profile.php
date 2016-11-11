@@ -9,10 +9,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Profile extends Model {
 	
-	public function __construct() {
-		$this->academicsQualifications = new ArrayCollection();
-	}
-	
 	/**
 	 * @ttm-DtoAttribute
 	 * @Id
@@ -23,26 +19,24 @@ class Profile extends Model {
 	
 	/**
 	 * @ttm-DtoAttribute
-	 * @Column(type="string")
-	 */
-	protected $name;
-	
-	/**
-	 * @ttm-DtoAttribute
 	 * @Column(type="date")
 	 */
 	protected $dateOfBirth;
-	
+
 	/**
-	 * @ttm-DtoAttribute
-	 * @Column(type="string")
+	 * @OneToMany(targetEntity="ProfileStrings", mappedBy="profile")
 	 */
-	protected $document;
+	protected $profilesStrings;
 	
 	/**
-	 * @OneToMany(targetEntity="AcademicQualifications", mappedBy="Profile")
+	 * @OneToMany(targetEntity="AcademicQualifications", mappedBy="profile")
 	 */
 	protected $academicsQualifications;
+
+	public function __construct() {
+		$this->profilesStrings = new ArrayCollection();
+		$this->academicsQualifications = new ArrayCollection();
+	}
 	
 	public function getId() {
 		return $this->id;
@@ -50,14 +44,6 @@ class Profile extends Model {
 	
 	public function setId($id) {
 		$this->id = $id;
-	}
-	
-	public function getName():string {
-		return $this->name;
-	}
-	
-	public function setName(string $name) {
-		$this->name = $name;
 	}
 	
 	public function getDateOfBirth():\DateTime {
@@ -68,12 +54,12 @@ class Profile extends Model {
 		$this->dateOfBirth = $dateOfBirth;
 	}
 	
-	public function getDocument():string {
-		return $this->document;
+	public function getProfilesStrings() {
+		return $this->profilesStrings;
 	}
 	
-	public function setDocument(string $document) {
-		$this->document = $document;
+	public function setProfilesStrings($profilesStrings) {
+		$this->profilesStrings = $profilesStrings;
 	}
 	
 	public function getAcademicsQualifications() {

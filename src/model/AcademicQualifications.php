@@ -2,6 +2,7 @@
 namespace curriculum\model;
 
 use ttm\model\Model;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @Entity
@@ -18,12 +19,6 @@ class AcademicQualifications extends Model {
 	
 	/**
 	 * @ttm-DtoAttribute
-	 * @Column(type="string")
-	 */
-	protected $nameOfCourse;
-	
-	/**
-	 * @ttm-DtoAttribute
 	 * @Column(type="date")
 	 */
 	protected $dateOfBegin;
@@ -33,6 +28,11 @@ class AcademicQualifications extends Model {
 	 * @Column(type="date")
 	 */
 	protected $dateOfFinish;
+
+	/**
+	 * @OneToMany(targetEntity="AcademicQualificationsStrings", mappedBy="academicQualifications")
+	 */
+	protected $AcademicsQualificationsStrings;
 	
 	/**
 	 * @ManyToOne(targetEntity="Profile", inversedBy="academicsQualifications")
@@ -45,6 +45,10 @@ class AcademicQualifications extends Model {
 	 * @JoinColumn(name="idInstituteOfEducation", referencedColumnName="id")
 	 */
 	protected $instituteOfEducation;
+
+	public function __construct() {
+		$this->AcademicsQualificationsStrings = new ArrayCollection();
+	}
 	
 	public function getId() {
 		return $this->id;
@@ -54,14 +58,6 @@ class AcademicQualifications extends Model {
 		$this->id = $id;
 	}
 		
-	public function getNameOfCourse():string {
-		return $this->nameOfCourse;
-	}
-	
-	public function setNameOfCourse(string $nameOfCourse) {
-		$this->nameOfCourse = $nameOfCourse;
-	}
-	
 	public function getDateOfBegin():\DateTime {
 		return $this->dateOfBegin;
 	}
@@ -76,6 +72,14 @@ class AcademicQualifications extends Model {
 	
 	public function setDateOfFinish(\DateTime $dateOfFinish) {
 		$this->dateOfFinish = $dateOfFinish;
+	}
+	
+	public function getAcademicsQualificationsStrings() {
+		return $this->AcademicsQualificationsStrings;
+	}
+	
+	public function setAcademicsQualificationsStrings($AcademicsQualificationsStrings) {
+		$this->AcademicsQualificationsStrings = $AcademicsQualificationsStrings;
 	}
 	
 	public function getProfile():Profile {
