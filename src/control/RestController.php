@@ -78,7 +78,7 @@ class RestController extends AbstractRestController {
 	 *
 	 * @throws InvalidArgumentException - The service interface alias can't be null
 	 *
-	 * @access public @abstract
+	 * @access public 
 	 * @since 1.0
 	 */
 	public function solveServiceInterfaceAlias($serviceInterfaceAlias) {
@@ -132,6 +132,25 @@ class RestController extends AbstractRestController {
 		return $service;
 	}
 
+	/**
+	 * @method solveModelAlias - Implements the solve of the model alias
+	 * 
+	 * In cases where there is more than one data source, tray to find the model
+	 * on main datasource and after try in others ex:
+	 * 
+	 *  $model = Project\\model\\'.$modelAlias;
+	 *	if(!class_exists($model)) {
+	 *		$model = 'Project\\model_2\\'.$modelAlias;
+	 *	}
+	 *
+	 * @param $modelAlias - model alias for solving
+	 * @return the model namespace 
+	 *
+	 * @throws InvalidArgumentException - The model alias can't be null
+	 *
+	 * @access public 
+	 * @since 1.0
+	 */
 	public function solveModelAlias($modelAlias) {
 		if(is_null($modelAlias)) {
 			throw new \InvalidArgumentException("The model alias can't be null");
@@ -144,7 +163,16 @@ class RestController extends AbstractRestController {
 		
 		return $model;
 	}
-	
+
+	/**
+	 * @method getDaoConfig - Implements the get dao configuration, for returning to 
+	 * rest controller the data sources configurations on daoConfig.json
+	 *
+	 * @return data source configuratios
+	 *
+	 * @access public
+	 * @since 1.0
+	 */
 	public function getDaoConfig():array {
 		return Config::getDaoConfig();
 	}
