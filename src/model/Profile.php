@@ -1,15 +1,11 @@
 <?php
-
 namespace curriculum\model;
-
 
 use ttm\model\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- *
  * @Entity
- * @Table(name="profile")
  */
 class Profile extends Model {
 	
@@ -21,35 +17,32 @@ class Profile extends Model {
 	 * @ttm-DtoAttribute
 	 * @Id
 	 * @GeneratedValue(strategy="AUTO")
-	 * @Column(type="integer", name="profile_id")
+	 * @Column(type="integer")
 	 */
 	protected  $id;
 	
 	/**
 	 * @ttm-DtoAttribute
-	 * @Column(type="string", name="name")
+	 * @Column(type="string")
 	 */
 	protected $name;
 	
-	
 	/**
 	 * @ttm-DtoAttribute
-	 * @Column(type="date", name="date_of_birth")
+	 * @Column(type="date")
 	 */
 	protected $dateOfBirth;
 	
-	
 	/**
 	 * @ttm-DtoAttribute
-	 * @Column(type="string", name="document")
+	 * @Column(type="string")
 	 */
 	protected $document;
 	
 	/**
-	 * @OneToMany(targetEntity="AcademicQualifications", mappedBy="profile")
+	 * @OneToMany(targetEntity="AcademicQualifications", mappedBy="Profile")
 	 */
 	protected $academicsQualifications;
-	
 	
 	public function getId() {
 		return $this->id;
@@ -90,8 +83,4 @@ class Profile extends Model {
 	public function setAcademicsQualifications($academicsQualifications) {
 		$this->academicsQualifications = $academicsQualifications;
 	}
-	
-	
-	
-	
 }

@@ -1,14 +1,10 @@
 <?php
-
 namespace curriculum\model;
-
 
 use ttm\model\Model;
 
 /**
- *
  * @Entity
- * @Table(name="academic_qualifications")
  */
 class AcademicQualifications extends Model {
 	
@@ -16,40 +12,37 @@ class AcademicQualifications extends Model {
 	 * @ttm-DtoAttribute
 	 * @Id
 	 * @GeneratedValue(strategy="AUTO")
-	 * @Column(type="integer", name="acad_qual_id")
+	 * @Column(type="integer")
 	 */
 	protected  $id;
 	
 	/**
 	 * @ttm-DtoAttribute
-	 * @Column(type="string", name="name_of_course")
+	 * @Column(type="string")
 	 */
 	protected $nameOfCourse;
 	
 	/**
 	 * @ttm-DtoAttribute
-	 * @Column(type="date", name="date_of_begin")
+	 * @Column(type="date")
 	 */
 	protected $dateOfBegin;
-	
 
 	/**
 	 * @ttm-DtoAttribute
-	 * @Column(type="date", name="date_of_finish")
+	 * @Column(type="date")
 	 */
 	protected $dateOfFinish;
 	
-	
 	/**
 	 * @ManyToOne(targetEntity="Profile", inversedBy="academicsQualifications")
-	 * @JoinColumn(name="profile_id", referencedColumnName="profile_id")
+	 * @JoinColumn(name="idProfile", referencedColumnName="id")
 	 */
 	protected $profile;
-	
 
 	/**
 	 * @ManyToOne(targetEntity="InstituteOfEducation")
-	 * @JoinColumn(name="institute_id", referencedColumnName="institute_id")
+	 * @JoinColumn(name="idInstituteOfEducation", referencedColumnName="id")
 	 */
 	protected $instituteOfEducation;
 	
@@ -99,6 +92,4 @@ class AcademicQualifications extends Model {
 	public function setInstituteOfEducation(InstituteOfEducation $instituteOfEducation) {
 		$this->instituteOfEducation = $instituteOfEducation;
 	}
-	
-	
 }

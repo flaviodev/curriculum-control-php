@@ -1,14 +1,10 @@
 <?php
-
 namespace curriculum\model;
-
 
 use ttm\model\Model;
 
 /**
- *
  * @Entity
- * @Table(name="institute_of_education")
  */
 class InstituteOfEducation extends Model {
 	
@@ -16,16 +12,15 @@ class InstituteOfEducation extends Model {
 	 * @ttm-DtoAttribute
 	 * @Id
 	 * @GeneratedValue(strategy="AUTO")
-	 * @Column(type="integer", name="institute_id")
+	 * @Column(type="integer")
 	 */
 	protected  $id;
 	
 	/**
 	 * @ttm-DtoAttribute
-	 * @Column(type="string", name="name")
+	 * @Column(type="string")
 	 */
 	protected $name;
-
 	
 	public function getId() {
 		return $this->id;
@@ -42,7 +37,4 @@ class InstituteOfEducation extends Model {
 	public function setName(string $name) {
 		$this->name = $name;
 	}
-	
-	
-	
 }

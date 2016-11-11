@@ -1,11 +1,9 @@
 <?php
-
 namespace curriculum\model_emp;
 
 use ttm\model\Model;
 
 /**
- *
  * @Entity
  */
 class Employer extends Model {
@@ -23,7 +21,6 @@ class Employer extends Model {
 	 * @Column(type="string")
 	 */
 	protected $name;
-
 	
 	public function getId() {
 		return $this->id;
@@ -40,7 +37,4 @@ class Employer extends Model {
 	public function setName(string $name) {
 		$this->name = $name;
 	}
-	
-	
-	
 }
