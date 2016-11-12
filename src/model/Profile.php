@@ -32,6 +32,7 @@ class Profile extends ModelLocale {
 	/**
 	 * @ttm-DtoAttribute
 	 * @OneToMany(targetEntity="ProfileStrings", mappedBy="profile")
+	 * @JoinColumn(name="profile_id", referencedColumnName="id", onDelete="CASCADE")
 	 */
 	protected $localeStrings;
 	

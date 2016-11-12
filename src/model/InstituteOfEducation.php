@@ -21,6 +21,7 @@ class InstituteOfEducation extends ModelLocale {
 	/**
 	 * @ttm-DtoAttribute
 	 * @OneToMany(targetEntity="InstituteOfEducationStrings", mappedBy="instituteOfEducation")
+	 * @JoinColumn(name="instituteOfEducation_id", referencedColumnName="id", onDelete="CASCADE")
 	 */
 	protected $localeStrings;
 	

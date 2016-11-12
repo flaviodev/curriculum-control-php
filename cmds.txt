@@ -34,7 +34,7 @@ curl -i -X GET -H 'Content-Type: application/json' http://127.0.0.1/curriculum-c
 
 curl -i -X GET -H 'Content-Type: application/json' http://127.0.0.1/curriculum-control-php/InstituteOfEducation/id=1
 
-curl -i -X POST -H 'Content-Type: application/json' -d '{"name":"Google Inc"}' http://127.0.0.1/curriculum-control-php/InstituteOfEducation
+curl -i -X POST -H 'Content-Type: application/json' -d '{"name":"Massachussets Institute of Tecnology"}' http://127.0.0.1/curriculum-control-php/InstituteOfEducation/en-us
 
 curl -i -X PUT -H 'Content-Type: application/json' -d '{"id":"2","name":"Oracle Corporate (US)"}' http://127.0.0.1/curriculum-control-php/InstituteOfEducation
 

@@ -39,12 +39,14 @@ class AcademicQualifications extends ModelLocale {
 	/**
 	 * @ManyToOne(targetEntity="InstituteOfEducation")
 	 * @JoinColumn(name="idInstituteOfEducation", referencedColumnName="id")
+	 * 
 	 */
 	protected $instituteOfEducation;
 
 	/**
 	 * @ttm-DtoAttribute
 	 * @OneToMany(targetEntity="AcademicQualificationsStrings", mappedBy="academicQualifications")
+	 * @JoinColumn(name="academicQualifications_id", referencedColumnName="id", onDelete="CASCADE")
 	 */
 	protected $localeStrings;
 	

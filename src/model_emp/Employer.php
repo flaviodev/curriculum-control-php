@@ -20,6 +20,7 @@ class Employer extends ModelLocale {
 	/**
 	 * @ttm-DtoAttribute
 	 * @OneToMany(targetEntity="EmployerStrings", mappedBy="employer")
+	 * @JoinColumn(name="employer_id", referencedColumnName="id", onDelete="CASCADE")
 	 */
 	protected $localeStrings;
 	

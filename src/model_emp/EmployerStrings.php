@@ -9,16 +9,14 @@ use ttm\model\ModelLocaleStrings;
 class EmployerStrings extends ModelLocaleStrings {
 	
 	/**
-	 * @ttm-DtoAttribute
-	 * @Id
-	 * @Column(type="integer")
+	 * @Id @ManyToOne(targetEntity="Employer", inversedBy="localeStrings")
 	 */
-	protected  $idEmployer;
+	protected  $employer;
 	
 	/**
 	 * @ttm-DtoAttribute
-	 * @Id
-	 * @Column(type="string")
+	 * @ttm-DtoCompositeFirstToParent
+	 * @Id @Column(type="string")
 	 */
 	protected  $locale;
 	
@@ -29,38 +27,28 @@ class EmployerStrings extends ModelLocaleStrings {
 	 */
 	protected $name;
 	
-	/**
-	 * @ManyToOne(targetEntity="Employer", inversedBy="employersStrings")
-	 * @JoinColumn(name="idEmployer", referencedColumnName="id")
-	 */
-	protected  $employer;
-	
-	public function __construct($idEmployer, $locale) {
-		$this->idEmployer = $idEmployer;
+	public function __construct($employer, $locale) {
+		$this->employer = $employer;
 		$this->locale = $locale;
 	}
 	
 	public function getId() {
-		$compositeId = new \stdClass();
-		$compositeId->idEmployer = $this->idEmployer;
-		$compositeId->locale = $this->getLocale();
-	
-		return $compositeId;
+		return array("employer" => $this->employer, "locale" => $this->getLocale());
 	}
 	
 	public function setId($compositeId) {
 		if(!is_null($compositeId)) {
-			$this->idEmployer = $compositeId->idEmployer;
-			$this->locale = $compositeId->locale;
+			$this->employer = $compositeId["employer"];
+			$this->locale = $compositeId["locale"];
 		}
 	}
 
-	public function getIdEmployer():int {
-		return $this->idEmployer;
+	public function getEmployer():Employer {
+		return $this->employer;
 	}
 	
-	public function setIdEmployer(int $idEmployer) {
-		$this->idEmployer = $idEmployer;
+	public function setEmployer(Employer $employer) {
+		$this->employer = $employer;
 	}
 	
 	public function getLocale():string {
@@ -77,13 +65,5 @@ class EmployerStrings extends ModelLocaleStrings {
 	
 	public function setName(string $name) {
 		$this->name = $name;
-	}
-	
-	public function getEmployer():Employer {
-		return $this->employer;
-	}
-	
-	public function setEmployer(Employer $employer) {
-		$this->employer = $employer;
 	}
 }

@@ -11,16 +11,14 @@ use ttm\model\ModelLocaleStrings;
 class InstituteOfEducationStrings extends ModelLocaleStrings {
 
 	/**
-	 * @ttm-DtoAttribute
-	 * @Id
-	 * @Column(type="integer")
+	 * @Id @ManyToOne(targetEntity="InstituteOfEducation", inversedBy="localeStrings")
 	 */
-	protected  $idInstituteOfEducation;
-
+	protected  $instituteOfEducation;
+	
 	/**
 	 * @ttm-DtoAttribute
-	 * @Id
-	 * @Column(type="string")
+	 * @ttm-DtoCompositeFirstToParent
+	 * @Id @Column(type="string")
 	 */
 	protected  $locale;
 	
@@ -30,39 +28,29 @@ class InstituteOfEducationStrings extends ModelLocaleStrings {
 	 * @Column(type="string")
 	 */
 	protected $name;
-	
-	/**
-	 * @ManyToOne(targetEntity="InstituteOfEducation", inversedBy="institutesOfEducationStrings")
-	 * @JoinColumn(name="idInstituteOfEducation", referencedColumnName="id")
-	 */
-	protected  $instituteOfEducation;
 
-	public function __construct($idInstituteOfEducation, $locale) {
-		$this->idInstituteOfEducation = $idInstituteOfEducation;
+	public function __construct($instituteOfEducation, $locale) {
+		$this->instituteOfEducation = $instituteOfEducation;
 		$this->locale = $locale;
 	}
 	
 	public function getId() {
-		$compositeId = new \stdClass();
-		$compositeId->idInstituteOfEducation = $this->idInstituteOfEducation;
-		$compositeId->locale = $this->getLocale();
-	
-		return $compositeId;
+		return array("instituteOfEducation" => $this->instituteOfEducation, "locale" => $this->getLocale());
 	}
 	
 	public function setId($compositeId) {
 		if(!is_null($compositeId)) {
-			$this->idInstituteOfEducation = $compositeId->idInstituteOfEducation;
-			$this->locale = $compositeId->locale;
+			$this->instituteOfEducation = $compositeId["instituteOfEducation"];
+			$this->locale = $compositeId["locale"];
 		}
 	}
 	
-	public function getIdInstituteOfEducation():int {
-		return $this->idInstituteOfEducation;
+	public function getInstituteOfEducation():InstituteOfEducation {
+		return $this->instituteOfEducation;
 	}
 	
-	public function setIdInstituteOfEducation(int $idInstituteOfEducation) {
-		$this->idInstituteOfEducation = $idInstituteOfEducation;
+	public function setInstituteOfEducation(InstituteOfEducation $instituteOfEducation) {
+		$this->instituteOfEducation = $instituteOfEducation;
 	}
 	
 	public function getLocale():string {
@@ -80,12 +68,5 @@ class InstituteOfEducationStrings extends ModelLocaleStrings {
 	public function setName(string $name) {
 		$this->name = $name;
 	}
-	
-	public function getInstituteOfEducation():InstituteOfEducation {
-		return $this->instituteOfEducation;
-	}
-	
-	public function setInstituteOfEducation(InstituteOfEducation $instituteOfEducation) {
-		$this->instituteOfEducation = $instituteOfEducation;
-	}
+
 }

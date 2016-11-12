@@ -7,18 +7,16 @@ use ttm\model\ModelLocaleStrings;
  * @Entity
  */
 class ProfileStrings extends ModelLocaleStrings {
-	
+
 	/**
-	 * @ttm-DtoAttribute
-	 * @Id
-	 * @Column(type="integer")
+	 * @Id @ManyToOne(targetEntity="Profile", inversedBy="localeStrings")
 	 */
-	protected  $idProfile;
+	protected  $profile;
 	
 	/**
 	 * @ttm-DtoAttribute
-	 * @Id
-	 * @Column(type="string")
+	 * @ttm-DtoCompositeFirstToParent
+	 * @Id @Column(type="string")
 	 */
 	protected  $locale;
 	
@@ -36,37 +34,28 @@ class ProfileStrings extends ModelLocaleStrings {
 	 */
 	protected $document;
 	
-	/**
-	 * @ManyToOne(targetEntity="Profile", inversedBy="profilesStrings")
-	 * @JoinColumn(name="idProfile", referencedColumnName="id")
-	 */
-	protected  $profile;
-	
-	public function __construct($idProfile, $locale) {
-		$this->idProfile = $idProfile;
+	public function __construct($profile, $locale) {
+		$this->profile = $profile;
 		$this->locale = $locale;
 	}
 	
 	public function getId() {
-		$compositeId = new \stdClass();
-		$compositeId->idProfile = $this->getIdProfile();
-		$compositeId->locale = $this->getLocale();
-		
-		return $compositeId;
+		return array("profile" => $this->profile, "locale" => $this->getLocale());
 	}
 	
 	public function setId($compositeId) {
 		if(!is_null($compositeId)) {
-			$this->idProfile = $compositeId->idProfile;
-			$this->locale = $compositeId->locale;
+			$this->profile = $compositeId["profile"];
+			$this->locale = $compositeId["locale"];
 		}
 	}
 
-	public function getIdProfile() {
-		return $this->idProfile;
+	public function getProfile():Profile {
+		return $this->profile;
 	}
-	public function setIdProfile($idProfile) {
-		$this->idProfile = $idProfile;
+	
+	public function setProfile(Profile $profile) {
+		$this->profile = $profile;
 	}
 	
 	public function getLocale():string {
@@ -91,13 +80,5 @@ class ProfileStrings extends ModelLocaleStrings {
 	
 	public function setDocument(string $document) {
 		$this->document = $document;
-	}
-	
-	public function getProfile():Profile {
-		return $this->profile;
-	}
-	
-	public function setProfile(Profile $profile) {
-		$this->profile = $profile;
 	}
 }
