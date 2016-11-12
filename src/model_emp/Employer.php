@@ -1,13 +1,13 @@
 <?php
 namespace curriculum\model_emp;
 
-use ttm\model\Model;
 use Doctrine\Common\Collections\ArrayCollection;
+use ttm\model\ModelLocale;
 
 /**
  * @Entity
  */
-class Employer extends Model {
+class Employer extends ModelLocale {
 	
 	/**
 	 * @ttm-DtoAttribute
@@ -18,12 +18,21 @@ class Employer extends Model {
 	protected  $id;
 	
 	/**
+	 * @ttm-DtoAttribute
 	 * @OneToMany(targetEntity="EmployerStrings", mappedBy="employer")
 	 */
-	protected $employersStrings;
+	protected $localeStrings;
 	
 	public function __construct() {
-		$this->employersStrings = new ArrayCollection();
+		$this->localeStrings = new ArrayCollection();
+	}
+	
+	public function getLocaleStrings() {
+		return $this->localeStrings;
+	}
+	
+	public function setLocaleStrings($localeStrings) {
+		$this->localeStrings = $localeStrings;
 	}
 	
 	public function getId() {
@@ -34,11 +43,4 @@ class Employer extends Model {
 		$this->id = $id;
 	}
 	
-	public function getEmployersStrings() {
-		return $this->employersStrings;
-	}
-
-	public function setEmployersStrings($employersStrings) {
-		$this->employersStrings = $employersStrings;
-	}
 }

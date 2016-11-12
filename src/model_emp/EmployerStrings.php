@@ -1,12 +1,12 @@
 <?php
 namespace curriculum\model_emp;
 
-use ttm\model\ModelLocale;
+use ttm\model\ModelLocaleStrings;
 
 /**
  * @Entity
  */
-class EmployerStrings extends ModelLocale {
+class EmployerStrings extends ModelLocaleStrings {
 	
 	/**
 	 * @ttm-DtoAttribute
@@ -24,6 +24,7 @@ class EmployerStrings extends ModelLocale {
 	
 	/**
 	 * @ttm-DtoAttribute
+	 * @ttm-DtoCompositeFirstToParent
 	 * @Column(type="string")
 	 */
 	protected $name;
@@ -40,22 +41,20 @@ class EmployerStrings extends ModelLocale {
 	}
 	
 	public function getId() {
-		return ["id"=> $this->ididEmployer, "locale" => $this->locale];
+		$compositeId = new \stdClass();
+		$compositeId->idEmployer = $this->idEmployer;
+		$compositeId->locale = $this->getLocale();
+	
+		return $compositeId;
 	}
 	
-	public function setId($idEmployer, $locale) {
-		$this->idEmployer = $idEmployer;
-		$this->locale = $locale;
+	public function setId($compositeId) {
+		if(!is_null($compositeId)) {
+			$this->idEmployer = $compositeId->idEmployer;
+			$this->locale = $compositeId->locale;
+		}
 	}
-	
-	public function getName():string {
-		return $this->name;
-	}
-	
-	public function setName(string $name) {
-		$this->name = $name;
-	}
-	
+
 	public function getIdEmployer():int {
 		return $this->idEmployer;
 	}
@@ -70,6 +69,14 @@ class EmployerStrings extends ModelLocale {
 	
 	public function setLocale(string $locale) {
 		$this->locale = $locale;
+	}
+	
+	public function getName():string {
+		return $this->name;
+	}
+	
+	public function setName(string $name) {
+		$this->name = $name;
 	}
 	
 	public function getEmployer():Employer {

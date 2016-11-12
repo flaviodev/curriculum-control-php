@@ -1,13 +1,14 @@
 <?php
 namespace curriculum\model;
 
-use ttm\model\Model;
 use Doctrine\Common\Collections\ArrayCollection;
+use ttm\model\Model;
+use ttm\model\ModelLocale;
 
 /**
  * @Entity
  */
-class InstituteOfEducation extends Model {
+class InstituteOfEducation extends ModelLocale {
 
 	/**
 	 * @ttm-DtoAttribute
@@ -18,12 +19,21 @@ class InstituteOfEducation extends Model {
 	protected  $id;
 	
 	/**
+	 * @ttm-DtoAttribute
 	 * @OneToMany(targetEntity="InstituteOfEducationStrings", mappedBy="instituteOfEducation")
 	 */
-	protected $institutesOfEducationStrings;
+	protected $localeStrings;
 	
 	public function __construct() {
-		$this->institutesOfEducationStrings = new ArrayCollection();
+		$this->localeStrings = new ArrayCollection();
+	}
+
+	public function getLocaleStrings() {
+		return $this->localeStrings;
+	}
+	
+	public function setLocaleStrings($localeStrings) {
+		$this->localeStrings = $localeStrings;
 	}
 	
 	public function getId() {
@@ -34,11 +44,6 @@ class InstituteOfEducation extends Model {
 		$this->id = $id;
 	}
 	
-	public function getInstitutesOfEducationStrings() {
-		return $this->institutesOfEducationStrings;
-	}
-	
-	public function setInstitutesOfEducationStrings($institutesOfEducationStrings) {
-		$this->institutesOfEducationStrings = $institutesOfEducationStrings;
-	}
+
+
 }

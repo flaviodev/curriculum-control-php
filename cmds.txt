@@ -30,7 +30,7 @@ $ vendor/bin/doctrine orm:generate-proxies
 
 curl -i -X GET -H 'Content-Type: application/json' http://127.0.0.1/curriculum-control-php/InstituteOfEducation
 
-curl -i -X GET -H 'Content-Type: application/json' http://127.0.0.1/curriculum-control-php/InstituteOfEducation/2
+curl -i -X GET -H 'Content-Type: application/json' http://127.0.0.1/curriculum-control-php/Profile/1
 
 curl -i -X GET -H 'Content-Type: application/json' http://127.0.0.1/curriculum-control-php/InstituteOfEducation/id=1
 

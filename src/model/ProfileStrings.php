@@ -1,12 +1,12 @@
 <?php
 namespace curriculum\model;
 
-use ttm\model\ModelLocale;
+use ttm\model\ModelLocaleStrings;
 
 /**
  * @Entity
  */
-class ProfileStrings extends ModelLocale {
+class ProfileStrings extends ModelLocaleStrings {
 	
 	/**
 	 * @ttm-DtoAttribute
@@ -24,12 +24,14 @@ class ProfileStrings extends ModelLocale {
 	
 	/**
 	 * @ttm-DtoAttribute
+	 * @ttm-DtoCompositeFirstToParent
 	 * @Column(type="string")
 	 */
 	protected $name;
 
 	/**
 	 * @ttm-DtoAttribute
+	 * @ttm-DtoCompositeFirstToParent
 	 * @Column(type="string")
 	 */
 	protected $document;
@@ -46,11 +48,32 @@ class ProfileStrings extends ModelLocale {
 	}
 	
 	public function getId() {
-		return ["id"=> $this->idProfile, "locale" => $this->locale];
+		$compositeId = new \stdClass();
+		$compositeId->idProfile = $this->getIdProfile();
+		$compositeId->locale = $this->getLocale();
+		
+		return $compositeId;
 	}
 	
-	public function setId($idProfile, $locale) {
+	public function setId($compositeId) {
+		if(!is_null($compositeId)) {
+			$this->idProfile = $compositeId->idProfile;
+			$this->locale = $compositeId->locale;
+		}
+	}
+
+	public function getIdProfile() {
+		return $this->idProfile;
+	}
+	public function setIdProfile($idProfile) {
 		$this->idProfile = $idProfile;
+	}
+	
+	public function getLocale():string {
+		return $this->locale;
+	}
+	
+	public function setLocale(string $locale) {
 		$this->locale = $locale;
 	}
 	
@@ -68,22 +91,6 @@ class ProfileStrings extends ModelLocale {
 	
 	public function setDocument(string $document) {
 		$this->document = $document;
-	}
-	
-	public function getIdProfile():int {
-		return $this->idProfile;
-	}
-	
-	public function setIdProfile(int $idProfile) {
-		$this->idProfile = $idProfile;
-	}
-	
-	public function getLocale():string {
-		return $this->locale;
-	}
-	
-	public function setLocale(string $locale) {
-		$this->locale = $locale;
 	}
 	
 	public function getProfile():Profile {

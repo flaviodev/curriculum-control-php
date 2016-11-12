@@ -1,13 +1,14 @@
 <?php
 namespace curriculum\model;
 
-use ttm\model\Model;
 use Doctrine\Common\Collections\ArrayCollection;
+use ttm\model\Model;
+use ttm\model\ModelLocale;
 
 /**
  * @Entity
  */
-class AcademicQualifications extends Model {
+class AcademicQualifications extends ModelLocale {
 	
 	/**
 	 * @ttm-DtoAttribute
@@ -30,11 +31,6 @@ class AcademicQualifications extends Model {
 	protected $dateOfFinish;
 
 	/**
-	 * @OneToMany(targetEntity="AcademicQualificationsStrings", mappedBy="academicQualifications")
-	 */
-	protected $AcademicsQualificationsStrings;
-	
-	/**
 	 * @ManyToOne(targetEntity="Profile", inversedBy="academicsQualifications")
 	 * @JoinColumn(name="idProfile", referencedColumnName="id")
 	 */
@@ -46,8 +42,22 @@ class AcademicQualifications extends Model {
 	 */
 	protected $instituteOfEducation;
 
+	/**
+	 * @ttm-DtoAttribute
+	 * @OneToMany(targetEntity="AcademicQualificationsStrings", mappedBy="academicQualifications")
+	 */
+	protected $localeStrings;
+	
 	public function __construct() {
-		$this->AcademicsQualificationsStrings = new ArrayCollection();
+		$this->localeStrings = new ArrayCollection();
+	}
+	
+	public function getLocaleStrings() {
+		return $this->localeStrings;
+	}
+	
+	public function setLocaleStrings($localeStrings) {
+		$this->localeStrings = $localeStrings;
 	}
 	
 	public function getId() {
@@ -72,14 +82,6 @@ class AcademicQualifications extends Model {
 	
 	public function setDateOfFinish(\DateTime $dateOfFinish) {
 		$this->dateOfFinish = $dateOfFinish;
-	}
-	
-	public function getAcademicsQualificationsStrings() {
-		return $this->AcademicsQualificationsStrings;
-	}
-	
-	public function setAcademicsQualificationsStrings($AcademicsQualificationsStrings) {
-		$this->AcademicsQualificationsStrings = $AcademicsQualificationsStrings;
 	}
 	
 	public function getProfile():Profile {

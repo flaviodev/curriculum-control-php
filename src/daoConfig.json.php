@@ -12,7 +12,8 @@
 		"proxyDir" : "/home/flavio/projetos/workspace-ttm/curriculum-control-php/src/model/proxies",
 		"proxyNamespace" : "curriculum\\model\\proxies",
     	"namespaceModel" :"curriculum\\model",
-		"autoGenerateProxyClasses" : "true"
+		"autoGenerateProxyClasses" : "true",
+		"searchesWithLocaleOrder" : ["en-us","pt-br","es-es"]
 	},
     "employer_db": {
     	"dao": "ttm_dao_doctrine\\dao\\DoctrineDao",
@@ -27,6 +28,7 @@
 		"proxyDir" : "/home/flavio/projetos/workspace-ttm/curriculum-control-php/src/model_emp/proxies",
 		"proxyNamespace" : "curriculum\\model_emp\\proxies",
 		"namespaceModel" :"curriculum\\model_emp",
-		"autoGenerateProxyClasses" : "true"
+		"autoGenerateProxyClasses" : "true",
+		"searchesWithLocaleOrder" : ["en-us","pt-br","es-es"]
 	}
 }

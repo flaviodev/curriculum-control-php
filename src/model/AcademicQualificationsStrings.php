@@ -1,12 +1,14 @@
 <?php
 namespace curriculum\model;
 
-use ttm\model\ModelLocale;
+
+
+use ttm\model\ModelLocaleStrings;
 
 /**
  * @Entity
  */
-class AcademicQualificationsStrings extends ModelLocale {
+class AcademicQualificationsStrings extends ModelLocaleStrings {
 	
 	/**
 	 * @ttm-DtoAttribute
@@ -24,6 +26,7 @@ class AcademicQualificationsStrings extends ModelLocale {
 	
 	/**
 	 * @ttm-DtoAttribute
+	 * @ttm-DtoCompositeFirstToParent
 	 * @Column(type="string")
 	 */
 	protected $nameOfCourse;
@@ -40,22 +43,20 @@ class AcademicQualificationsStrings extends ModelLocale {
 	}
 	
 	public function getId() {
-		return ["id"=> $this->idAcademicQualifications, "locale" => $this->locale];
+		$compositeId = new \stdClass();
+		$compositeId->idAcademicQualifications = $this->idAcademicQualifications;
+		$compositeId->locale = $this->getLocale();
+	
+		return $compositeId;
 	}
 	
-	public function setId($idAcademicQualifications, $locale) {
-		$this->idAcademicQualifications = $idAcademicQualifications;
-		$this->locale = $locale;
+	public function setId($compositeId) {
+		if(!is_null($compositeId)) {
+			$this->idAcademicQualifications = $compositeId->idAcademicQualifications;
+			$this->locale = $compositeId->locale;
+		}
 	}
-	
-	public function getNameOfCourse():string {
-		return $this->nameOfCourse;
-	}
-	
-	public function setNameOfCourse(string $nameOfCourse) {
-		$this->nameOfCourse = $nameOfCourse;
-	}
-	
+
 	public function getIdAcademicQualifications():int {
 		return $this->idAcademicQualifications;
 	}
@@ -72,6 +73,14 @@ class AcademicQualificationsStrings extends ModelLocale {
 		$this->locale = $locale;
 	}
 	
+	public function getNameOfCourse():string {
+		return $this->nameOfCourse;
+	}
+	
+	public function setNameOfCourse(string $nameOfCourse) {
+		$this->nameOfCourse = $nameOfCourse;
+	}
+
 	public function getAcademicQualifications():AcademicQualifications {
 		return $this->academicQualifications;
 	}

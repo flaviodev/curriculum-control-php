@@ -1,13 +1,14 @@
 <?php
 namespace curriculum\model;
 
-use ttm\model\Model;
 use Doctrine\Common\Collections\ArrayCollection;
+use ttm\model\Model;
+use ttm\model\ModelLocale;
 
 /**
  * @Entity
  */
-class Profile extends Model {
+class Profile extends ModelLocale {
 	
 	/**
 	 * @ttm-DtoAttribute
@@ -22,20 +23,28 @@ class Profile extends Model {
 	 * @Column(type="date")
 	 */
 	protected $dateOfBirth;
-
-	/**
-	 * @OneToMany(targetEntity="ProfileStrings", mappedBy="profile")
-	 */
-	protected $profilesStrings;
 	
 	/**
 	 * @OneToMany(targetEntity="AcademicQualifications", mappedBy="profile")
 	 */
 	protected $academicsQualifications;
 
+	/**
+	 * @ttm-DtoAttribute
+	 * @OneToMany(targetEntity="ProfileStrings", mappedBy="profile")
+	 */
+	protected $localeStrings;
+	
 	public function __construct() {
-		$this->profilesStrings = new ArrayCollection();
-		$this->academicsQualifications = new ArrayCollection();
+		$this->localeStrings = new ArrayCollection();
+	}
+	
+	public function getLocaleStrings() {
+		return $this->localeStrings;
+	}
+	
+	public function setLocaleStrings($localeStrings) {
+		$this->localeStrings = $localeStrings;
 	}
 	
 	public function getId() {
@@ -52,14 +61,6 @@ class Profile extends Model {
 	
 	public function setDateOfBirth(\DateTime $dateOfBirth) {
 		$this->dateOfBirth = $dateOfBirth;
-	}
-	
-	public function getProfilesStrings() {
-		return $this->profilesStrings;
-	}
-	
-	public function setProfilesStrings($profilesStrings) {
-		$this->profilesStrings = $profilesStrings;
 	}
 	
 	public function getAcademicsQualifications() {
